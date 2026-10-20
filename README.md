@@ -34,14 +34,9 @@ Manual install for Claude Code: copy a `skills/<name>/` directory into `.claude/
 
 ## How the skills work together
 
-```
-qa-automation-orchestrator   brainstorm → test strategy → plan → route each task
-        │
-        ├── qa-automation-architect   structure, audit, CI/reporting, conventions
-        ├── qa-api-tests              clients, contracts, data, async checks
-        ├── qa-ui-e2e-tests           browser journeys, locators, auth state
-        └── qa-mobile-tests           devices, Detox/Maestro/Appium, clouds
-```
+<p align="center">
+  <img src="docs/skills-diagram.svg" alt="The orchestrator brainstorms, writes a test strategy and a plan, then routes each task to the architect, API, UI e2e or mobile skill; every skill verifies tool details against official documentation" width="960">
+</p>
 
 Every skill has a `references/official-docs.md` with a lookup protocol (installed version → documentation MCP or official URL → confirm the option → cite it → mark unverified if unreachable) and a map of official documentation pages for the tools it covers.
 
