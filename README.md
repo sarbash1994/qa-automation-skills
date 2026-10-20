@@ -18,17 +18,29 @@ Start with the orchestrator; it decides the size of the work and hands tasks to 
 
 ## Install
 
-With the [`skills`](https://github.com/vercel-labs/skills) CLI (per project; add `-g` for all projects):
+With the [`skills`](https://github.com/vercel-labs/skills) CLI. All five skills in one command (project-level, into every supported agent):
 
 ```bash
-npx skills add sarbash1994/qa-automation-skills -s qa-automation-orchestrator
-npx skills add sarbash1994/qa-automation-skills -s qa-automation-architect
-npx skills add sarbash1994/qa-automation-skills -s qa-api-tests
-npx skills add sarbash1994/qa-automation-skills -s qa-ui-e2e-tests
-npx skills add sarbash1994/qa-automation-skills -s qa-mobile-tests
+npx skills add sarbash1994/qa-automation-skills --all
 ```
 
-List what the repository offers without installing: `npx skills add sarbash1994/qa-automation-skills -l`.
+Variants:
+
+```bash
+# all skills, Claude Code only
+npx skills add sarbash1994/qa-automation-skills -s '*' -a claude-code -y
+
+# one skill at a time
+npx skills add sarbash1994/qa-automation-skills -s qa-automation-orchestrator
+
+# globally, for every project on this machine
+npx skills add sarbash1994/qa-automation-skills --all -g
+
+# list what the repository offers without installing
+npx skills add sarbash1994/qa-automation-skills -l
+```
+
+The CLI records what it installed in `skills-lock.json`; on another machine `npx skills experimental_install` restores it, and `npx skills update` pulls newer versions. Agents pick up new skills on their next session.
 
 Manual install for Claude Code: copy a `skills/<name>/` directory into `.claude/skills/` of a project (or `~/.claude/skills/` for every project) and start a new session.
 
