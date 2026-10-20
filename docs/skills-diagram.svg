@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="704" viewBox="0 0 960 704" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="724" viewBox="0 0 960 724" role="img" aria-labelledby="t d">
   <title id="t">How the QA automation skills work together</title>
   <desc id="d">The orchestrator collects documentation, brainstorms, writes a test strategy and a plan, then routes tasks. The architect governs structure, CI and conventions across four layer skills: unit, API, UI e2e and mobile. Every skill verifies tool details against official documentation.</desc>
   <defs>
@@ -17,7 +17,7 @@
       .c { text-anchor: middle; }
     </style>
   </defs>
-  <rect width="960" height="704" rx="12" fill="url(#bg)"/>
+  <rect width="960" height="724" rx="12" fill="url(#bg)"/>
 
   <!-- Orchestrator -->
   <rect x="200" y="34" width="560" height="122" rx="14" fill="url(#orch)" opacity="0.18" filter="url(#glow)"/>
@@ -39,88 +39,88 @@
   <path d="M480,156 L480,190" class="line" marker-end="url(#arrow)"/>
 
   <!-- Architect (cross-cutting) -->
-  <rect x="30" y="194" width="900" height="126" rx="12" class="card"/>
-  <rect x="30" y="194" width="900" height="4" rx="2" fill="#2f81f7"/>
+  <rect x="200" y="194" width="560" height="148" rx="12" class="card"/>
+  <rect x="200" y="194" width="560" height="4" rx="2" fill="#2f81f7"/>
   <text x="480" y="226" class="mono title c" font-size="14">qa-automation-architect</text>
   <text x="480" y="246" class="sans muted c" font-size="12">Structure and governance across every layer</text>
   <g class="sans light c" font-size="12">
-    <text x="200" y="276">• test pyramid, recon-first</text>
-    <text x="200" y="298">• layering, conventions</text>
-    <text x="480" y="276">• audits of existing suites</text>
-    <text x="480" y="298">• flake and defect policy</text>
-    <text x="760" y="276">• CI, Allure, sharding</text>
-    <text x="760" y="298">• BrowserStack, dashboards</text>
+    <text x="340" y="276">• test pyramid, recon-first</text>
+    <text x="340" y="298">• layering, conventions</text>
+    <text x="340" y="320">• audits of existing suites</text>
+    <text x="620" y="276">• flake and defect policy</text>
+    <text x="620" y="298">• CI, Allure, sharding</text>
+    <text x="620" y="320">• BrowserStack, dashboards</text>
   </g>
 
   <!-- Architect -> layer cards -->
-  <path d="M480,320 L480,350" class="line"/>
-  <path d="M135,350 L825,350" class="line"/>
-  <path d="M135,350 L135,386" class="line" marker-end="url(#arrow)"/>
-  <path d="M365,350 L365,386" class="line" marker-end="url(#arrow)"/>
-  <path d="M595,350 L595,386" class="line" marker-end="url(#arrow)"/>
-  <path d="M825,350 L825,386" class="line" marker-end="url(#arrow)"/>
+  <path d="M480,342 L480,370" class="line"/>
+  <path d="M135,370 L825,370" class="line"/>
+  <path d="M135,370 L135,406" class="line" marker-end="url(#arrow)"/>
+  <path d="M365,370 L365,406" class="line" marker-end="url(#arrow)"/>
+  <path d="M595,370 L595,406" class="line" marker-end="url(#arrow)"/>
+  <path d="M825,370 L825,406" class="line" marker-end="url(#arrow)"/>
 
   <!-- Layer cards -->
   <g class="sans">
-    <rect x="30" y="390" width="210" height="210" rx="12" class="card"/>
-    <rect x="30" y="390" width="210" height="4" rx="2" fill="#a371f7"/>
-    <text x="135" y="422" class="mono title c" font-size="13.5">qa-unit-tests</text>
-    <text x="135" y="442" class="muted c" font-size="12">Logic and components</text>
+    <rect x="30" y="410" width="210" height="210" rx="12" class="card"/>
+    <rect x="30" y="410" width="210" height="4" rx="2" fill="#a371f7"/>
+    <text x="135" y="442" class="mono title c" font-size="13.5">qa-unit-tests</text>
+    <text x="135" y="462" class="muted c" font-size="12">Logic and components</text>
     <g font-size="12" class="light">
-      <text x="48" y="472">• Vitest, Jest, node:test</text>
-      <text x="48" y="492">• Testing Library (web, RN)</text>
-      <text x="48" y="512">• pure-logic extraction</text>
-      <text x="48" y="532">• doubles, msw, fake timers</text>
-      <text x="48" y="552">• meaningful coverage gates</text>
-      <text x="48" y="572">• Stryker, fast-check</text>
+      <text x="48" y="492">• Vitest, Jest, node:test</text>
+      <text x="48" y="512">• Testing Library (web, RN)</text>
+      <text x="48" y="532">• pure-logic extraction</text>
+      <text x="48" y="552">• doubles, msw, fake timers</text>
+      <text x="48" y="572">• meaningful coverage gates</text>
+      <text x="48" y="592">• Stryker, fast-check</text>
     </g>
 
-    <rect x="260" y="390" width="210" height="210" rx="12" class="card"/>
-    <rect x="260" y="390" width="210" height="4" rx="2" fill="#3fb950"/>
-    <text x="365" y="422" class="mono title c" font-size="13.5">qa-api-tests</text>
-    <text x="365" y="442" class="muted c" font-size="12">REST and GraphQL suites</text>
+    <rect x="260" y="410" width="210" height="210" rx="12" class="card"/>
+    <rect x="260" y="410" width="210" height="4" rx="2" fill="#3fb950"/>
+    <text x="365" y="442" class="mono title c" font-size="13.5">qa-api-tests</text>
+    <text x="365" y="462" class="muted c" font-size="12">REST and GraphQL suites</text>
     <g font-size="12" class="light">
-      <text x="278" y="472">• Playwright request</text>
-      <text x="278" y="492">• Jest / Vitest + Axios</text>
-      <text x="278" y="512">• supertest for own routes</text>
-      <text x="278" y="532">• AJV / OpenAPI / Pact</text>
-      <text x="278" y="552">• 429 retry, async polling</text>
-      <text x="278" y="572">• negative-test matrix</text>
+      <text x="278" y="492">• Playwright request</text>
+      <text x="278" y="512">• Jest / Vitest + Axios</text>
+      <text x="278" y="532">• supertest for own routes</text>
+      <text x="278" y="552">• AJV / OpenAPI / Pact</text>
+      <text x="278" y="572">• 429 retry, async polling</text>
+      <text x="278" y="592">• negative-test matrix</text>
     </g>
 
-    <rect x="490" y="390" width="210" height="210" rx="12" class="card"/>
-    <rect x="490" y="390" width="210" height="4" rx="2" fill="#d29922"/>
-    <text x="595" y="422" class="mono title c" font-size="13.5">qa-ui-e2e-tests</text>
-    <text x="595" y="442" class="muted c" font-size="12">Browser journeys</text>
+    <rect x="490" y="410" width="210" height="210" rx="12" class="card"/>
+    <rect x="490" y="410" width="210" height="4" rx="2" fill="#d29922"/>
+    <text x="595" y="442" class="mono title c" font-size="13.5">qa-ui-e2e-tests</text>
+    <text x="595" y="462" class="muted c" font-size="12">Browser journeys</text>
     <g font-size="12" class="light">
-      <text x="508" y="472">• locators, Page Objects</text>
-      <text x="508" y="492">• storage-state auth</text>
-      <text x="508" y="512">• web-first waits, no sleeps</text>
-      <text x="508" y="532">• visual, responsive, axe</text>
-      <text x="508" y="552">• volatile A/B funnels</text>
-      <text x="508" y="572">• WebdriverIO, BrowserStack</text>
+      <text x="508" y="492">• locators, Page Objects</text>
+      <text x="508" y="512">• storage-state auth</text>
+      <text x="508" y="532">• web-first waits, no sleeps</text>
+      <text x="508" y="552">• visual, responsive, axe</text>
+      <text x="508" y="572">• volatile A/B funnels</text>
+      <text x="508" y="592">• WebdriverIO, BrowserStack</text>
     </g>
 
-    <rect x="720" y="390" width="210" height="210" rx="12" class="card"/>
-    <rect x="720" y="390" width="210" height="4" rx="2" fill="#f778ba"/>
-    <text x="825" y="422" class="mono title c" font-size="13.5">qa-mobile-tests</text>
-    <text x="825" y="442" class="muted c" font-size="12">Devices and simulators</text>
+    <rect x="720" y="410" width="210" height="210" rx="12" class="card"/>
+    <rect x="720" y="410" width="210" height="4" rx="2" fill="#f778ba"/>
+    <text x="825" y="442" class="mono title c" font-size="13.5">qa-mobile-tests</text>
+    <text x="825" y="462" class="muted c" font-size="12">Devices and simulators</text>
     <g font-size="12" class="light">
-      <text x="738" y="472">• Detox, Maestro, Appium</text>
-      <text x="738" y="492">• RN / Expo layering</text>
-      <text x="738" y="512">• testID and a11y hooks</text>
-      <text x="738" y="532">• permissions, deep links</text>
-      <text x="738" y="552">• device clouds, EAS</text>
-      <text x="738" y="572">• build and CI discipline</text>
+      <text x="738" y="492">• Detox, Maestro, Appium</text>
+      <text x="738" y="512">• RN / Expo layering</text>
+      <text x="738" y="532">• testID and a11y hooks</text>
+      <text x="738" y="552">• permissions, deep links</text>
+      <text x="738" y="572">• device clouds, EAS</text>
+      <text x="738" y="592">• build and CI discipline</text>
     </g>
   </g>
 
   <!-- Documentation-first band -->
   <g class="sans">
-    <rect x="30" y="624" width="900" height="64" rx="12" fill="#0f1a14" stroke="#238636"/>
-    <circle cx="62" cy="656" r="12" fill="#238636"/>
-    <path d="M56,656 L60.5,660.5 L69,651.5" stroke="#e6edf3" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="86" y="651" class="title" font-size="13.5">Documentation-first in every skill</text>
-    <text x="86" y="672" class="muted" font-size="12.5">installed version → official docs (MCP or URL) → confirm the option → cite it → mark unverified if unreachable</text>
+    <rect x="30" y="644" width="900" height="64" rx="12" fill="#0f1a14" stroke="#238636"/>
+    <circle cx="62" cy="676" r="12" fill="#238636"/>
+    <path d="M56,676 L60.5,680.5 L69,671.5" stroke="#e6edf3" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="86" y="671" class="title" font-size="13.5">Documentation-first in every skill</text>
+    <text x="86" y="692" class="muted" font-size="12.5">installed version → official docs (MCP or URL) → confirm the option → cite it → mark unverified if unreachable</text>
   </g>
 </svg>
