@@ -17,6 +17,10 @@ Two or three sentences: what is under test, why automation now, what success loo
 - Non-goals: what this deliberately does not cover (e.g. visual regression in phase 1).
 - Anti-goals: what would make this a failure even if it works (flaky reruns, >N-minute pipeline, tests nobody can read, tests that pass while the product is broken).
 
+## Inputs received
+
+Documents the strategy rests on, with where they live and what they leave unexplained: API contract (OpenAPI/GraphQL/collection), architecture overview, ADRs, data model, journeys, existing tests and CI. Gaps become tasks ("derive endpoint inventory") or user questions.
+
 ## What was found (recon)
 
 Facts about the target that force decisions, each with its consequence:
@@ -32,8 +36,8 @@ Facts about the target that force decisions, each with its consequence:
 
 | Behaviour / area | Proven at | Why there |
 |---|---|---|
+| Decision logic (parsers, pricing, navigation rules), components | unit (`qa-unit-tests`) | no I/O, milliseconds |
 | Validation rules, auth, pagination, contracts | API | fast, deterministic |
-| Decision logic (parsers, pricing, navigation rules) | unit | no I/O |
 | Critical user journeys (list them) | browser / device E2E | user-visible, rendering |
 | Non-functional (visual, a11y, perf) | targeted checks | ... |
 

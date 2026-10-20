@@ -1,22 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="t d">
   <title id="t">How the QA automation skills work together</title>
-  <desc id="d">The orchestrator brainstorms, writes a test strategy and a plan, then routes each task to the architect, API, UI e2e or mobile skill. Every skill verifies tool details against official documentation.</desc>
+  <desc id="d">The orchestrator collects documentation, brainstorms, writes a test strategy and a plan, then routes tasks. The architect governs structure, CI and conventions across four layer skills: unit, API, UI e2e and mobile. Every skill verifies tool details against official documentation.</desc>
   <defs>
-    <linearGradient id="orch" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#6e40c9"/>
-      <stop offset="1" stop-color="#8957e5"/>
-    </linearGradient>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0d1117"/>
-      <stop offset="1" stop-color="#10161f"/>
-    </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="10" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0,1 L9,5 L0,9 z" fill="#8b949e"/>
-    </marker>
+    <linearGradient id="orch" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6e40c9"/><stop offset="1" stop-color="#8957e5"/></linearGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1117"/><stop offset="1" stop-color="#10161f"/></linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,1 L9,5 L0,9 z" fill="#8b949e"/></marker>
     <style>
       .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
       .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
@@ -27,105 +16,111 @@
       .line { stroke: #30363d; stroke-width: 2; fill: none; }
     </style>
   </defs>
-
-  <rect width="960" height="580" rx="12" fill="url(#bg)"/>
+  <rect width="960" height="660" rx="12" fill="url(#bg)"/>
 
   <!-- Orchestrator -->
-  <g>
-    <rect x="200" y="34" width="560" height="118" rx="14" fill="url(#orch)" opacity="0.18" filter="url(#glow)"/>
-    <rect x="200" y="34" width="560" height="118" rx="14" fill="#161b22" stroke="#8957e5" stroke-width="1.5"/>
-    <rect x="200" y="34" width="6" height="118" rx="3" fill="url(#orch)"/>
-    <text x="224" y="64" class="mono title" font-size="17">qa-automation-orchestrator</text>
-    <text x="224" y="86" class="sans muted" font-size="13">Entry point for any open-ended testing request</text>
-    <!-- flow pills -->
-    <g class="sans" font-size="12.5">
-      <rect x="224" y="104" width="86" height="28" rx="14" fill="#1f2937" stroke="#3d2f7a"/>
-      <text x="267" y="122" text-anchor="middle" class="light">brainstorm</text>
-      <path d="M312,118 L328,118" class="line" marker-end="url(#arrow)"/>
-      <rect x="332" y="104" width="100" height="28" rx="14" fill="#1f2937" stroke="#3d2f7a"/>
-      <text x="382" y="122" text-anchor="middle" class="light">test strategy</text>
-      <path d="M434,118 L450,118" class="line" marker-end="url(#arrow)"/>
-      <rect x="454" y="104" width="56" height="28" rx="14" fill="#1f2937" stroke="#3d2f7a"/>
-      <text x="482" y="122" text-anchor="middle" class="light">plan</text>
-      <path d="M512,118 L528,118" class="line" marker-end="url(#arrow)"/>
-      <rect x="532" y="104" width="118" height="28" rx="14" fill="#2a1f52" stroke="#8957e5"/>
-      <text x="591" y="122" text-anchor="middle" fill="#e6edf3">route each task</text>
-    </g>
+  <rect x="200" y="34" width="560" height="118" rx="14" fill="url(#orch)" opacity="0.18" filter="url(#glow)"/>
+  <rect x="200" y="34" width="560" height="118" rx="14" fill="#161b22" stroke="#8957e5" stroke-width="1.5"/>
+  <rect x="200" y="34" width="6" height="118" rx="3" fill="url(#orch)"/>
+  <text x="224" y="64" class="mono title" font-size="17">qa-automation-orchestrator</text>
+  <text x="224" y="86" class="sans muted" font-size="13">Entry point: collects docs (OpenAPI, architecture, ADRs), asks, designs</text>
+  <g class="sans" font-size="12.5">
+    <rect x="224" y="104" width="86" height="28" rx="14" fill="#1f2937" stroke="#3d2f7a"/><text x="267" y="122" text-anchor="middle" class="light">brainstorm</text>
+    <path d="M312,118 L328,118" class="line" marker-end="url(#arrow)"/>
+    <rect x="332" y="104" width="100" height="28" rx="14" fill="#1f2937" stroke="#3d2f7a"/><text x="382" y="122" text-anchor="middle" class="light">test strategy</text>
+    <path d="M434,118 L450,118" class="line" marker-end="url(#arrow)"/>
+    <rect x="454" y="104" width="56" height="28" rx="14" fill="#1f2937" stroke="#3d2f7a"/><text x="482" y="122" text-anchor="middle" class="light">plan</text>
+    <path d="M512,118 L528,118" class="line" marker-end="url(#arrow)"/>
+    <rect x="532" y="104" width="118" height="28" rx="14" fill="#2a1f52" stroke="#8957e5"/><text x="591" y="122" text-anchor="middle" fill="#e6edf3">route each task</text>
   </g>
 
-  <!-- Connectors: trunk + branches -->
-  <path d="M480,152 L480,196" class="line"/>
-  <path d="M135,196 L825,196" class="line"/>
-  <path d="M135,196 L135,236" class="line" marker-end="url(#arrow)"/>
-  <path d="M365,196 L365,236" class="line" marker-end="url(#arrow)"/>
-  <path d="M595,196 L595,236" class="line" marker-end="url(#arrow)"/>
-  <path d="M825,196 L825,236" class="line" marker-end="url(#arrow)"/>
+  <!-- Orchestrator -> Architect -->
+  <path d="M480,152 L480,186" class="line" marker-end="url(#arrow)"/>
 
-  <!-- Layer skill cards -->
+  <!-- Architect (cross-cutting, wide) -->
+  <rect x="30" y="190" width="900" height="82" rx="12" class="card"/>
+  <rect x="30" y="190" width="900" height="4" rx="2" fill="#2f81f7"/>
+  <text x="48" y="222" class="mono title" font-size="13.5">qa-automation-architect</text>
+  <text x="48" y="242" class="sans muted" font-size="12">Structure and governance</text>
+  <g class="sans light" font-size="12">
+    <text x="300" y="222">• test pyramid, recon-first</text>
+    <text x="300" y="242">• layering, conventions</text>
+    <text x="510" y="222">• audits of existing suites</text>
+    <text x="510" y="242">• flake and defect policy</text>
+    <text x="720" y="222">• CI, Allure, sharding</text>
+    <text x="720" y="242">• BrowserStack, dashboards</text>
+  </g>
+  <text x="912" y="262" text-anchor="end" class="sans muted" font-size="11">cross-cutting</text>
+
+  <!-- Architect -> layer cards -->
+  <path d="M480,272 L480,300" class="line"/>
+  <path d="M135,300 L825,300" class="line"/>
+  <path d="M135,300 L135,336" class="line" marker-end="url(#arrow)"/>
+  <path d="M365,300 L365,336" class="line" marker-end="url(#arrow)"/>
+  <path d="M595,300 L595,336" class="line" marker-end="url(#arrow)"/>
+  <path d="M825,300 L825,336" class="line" marker-end="url(#arrow)"/>
+
+  <!-- Layer cards -->
   <g class="sans">
-    <!-- architect -->
-    <rect x="30" y="240" width="210" height="210" rx="12" class="card"/>
-    <rect x="30" y="240" width="210" height="4" rx="2" fill="#2f81f7"/>
-    <text x="48" y="272" class="mono title" font-size="13.5">qa-automation-architect</text>
-    <text x="48" y="292" class="muted" font-size="12">Structure and governance</text>
+    <rect x="30" y="340" width="210" height="210" rx="12" class="card"/>
+    <rect x="30" y="340" width="210" height="4" rx="2" fill="#a371f7"/>
+    <text x="48" y="372" class="mono title" font-size="13.5">qa-unit-tests</text>
+    <text x="48" y="392" class="muted" font-size="12">Logic and components</text>
     <g font-size="12" class="light">
-      <text x="48" y="322">• test pyramid, recon-first</text>
-      <text x="48" y="342">• layering, conventions</text>
-      <text x="48" y="362">• audits of existing suites</text>
-      <text x="48" y="382">• flake and defect policy</text>
-      <text x="48" y="402">• CI, Allure, sharding</text>
-      <text x="48" y="422">• BrowserStack, dashboards</text>
+      <text x="48" y="422">• Vitest, Jest, node:test</text>
+      <text x="48" y="442">• Testing Library (web, RN)</text>
+      <text x="48" y="462">• pure-logic extraction</text>
+      <text x="48" y="482">• doubles, msw, fake timers</text>
+      <text x="48" y="502">• meaningful coverage gates</text>
+      <text x="48" y="522">• Stryker, fast-check</text>
     </g>
 
-    <!-- api -->
-    <rect x="260" y="240" width="210" height="210" rx="12" class="card"/>
-    <rect x="260" y="240" width="210" height="4" rx="2" fill="#3fb950"/>
-    <text x="278" y="272" class="mono title" font-size="13.5">qa-api-tests</text>
-    <text x="278" y="292" class="muted" font-size="12">REST and GraphQL suites</text>
+    <rect x="260" y="340" width="210" height="210" rx="12" class="card"/>
+    <rect x="260" y="340" width="210" height="4" rx="2" fill="#3fb950"/>
+    <text x="278" y="372" class="mono title" font-size="13.5">qa-api-tests</text>
+    <text x="278" y="392" class="muted" font-size="12">REST and GraphQL suites</text>
     <g font-size="12" class="light">
-      <text x="278" y="322">• Playwright request</text>
-      <text x="278" y="342">• Jest / Vitest + Axios</text>
-      <text x="278" y="362">• supertest for own routes</text>
-      <text x="278" y="382">• AJV / OpenAPI / Pact</text>
-      <text x="278" y="402">• 429 retry, async polling</text>
-      <text x="278" y="422">• negative-test matrix</text>
+      <text x="278" y="422">• Playwright request</text>
+      <text x="278" y="442">• Jest / Vitest + Axios</text>
+      <text x="278" y="462">• supertest for own routes</text>
+      <text x="278" y="482">• AJV / OpenAPI / Pact</text>
+      <text x="278" y="502">• 429 retry, async polling</text>
+      <text x="278" y="522">• negative-test matrix</text>
     </g>
 
-    <!-- ui -->
-    <rect x="490" y="240" width="210" height="210" rx="12" class="card"/>
-    <rect x="490" y="240" width="210" height="4" rx="2" fill="#d29922"/>
-    <text x="508" y="272" class="mono title" font-size="13.5">qa-ui-e2e-tests</text>
-    <text x="508" y="292" class="muted" font-size="12">Browser journeys</text>
+    <rect x="490" y="340" width="210" height="210" rx="12" class="card"/>
+    <rect x="490" y="340" width="210" height="4" rx="2" fill="#d29922"/>
+    <text x="508" y="372" class="mono title" font-size="13.5">qa-ui-e2e-tests</text>
+    <text x="508" y="392" class="muted" font-size="12">Browser journeys</text>
     <g font-size="12" class="light">
-      <text x="508" y="322">• locators, Page Objects</text>
-      <text x="508" y="342">• storage-state auth</text>
-      <text x="508" y="362">• web-first waits, no sleeps</text>
-      <text x="508" y="382">• visual, responsive, axe</text>
-      <text x="508" y="402">• volatile A/B funnels</text>
-      <text x="508" y="422">• WebdriverIO, BrowserStack</text>
+      <text x="508" y="422">• locators, Page Objects</text>
+      <text x="508" y="442">• storage-state auth</text>
+      <text x="508" y="462">• web-first waits, no sleeps</text>
+      <text x="508" y="482">• visual, responsive, axe</text>
+      <text x="508" y="502">• volatile A/B funnels</text>
+      <text x="508" y="522">• WebdriverIO, BrowserStack</text>
     </g>
 
-    <!-- mobile -->
-    <rect x="720" y="240" width="210" height="210" rx="12" class="card"/>
-    <rect x="720" y="240" width="210" height="4" rx="2" fill="#f778ba"/>
-    <text x="738" y="272" class="mono title" font-size="13.5">qa-mobile-tests</text>
-    <text x="738" y="292" class="muted" font-size="12">Devices and simulators</text>
+    <rect x="720" y="340" width="210" height="210" rx="12" class="card"/>
+    <rect x="720" y="340" width="210" height="4" rx="2" fill="#f778ba"/>
+    <text x="738" y="372" class="mono title" font-size="13.5">qa-mobile-tests</text>
+    <text x="738" y="392" class="muted" font-size="12">Devices and simulators</text>
     <g font-size="12" class="light">
-      <text x="738" y="322">• Detox, Maestro, Appium</text>
-      <text x="738" y="342">• RN / Expo layering</text>
-      <text x="738" y="362">• testID and a11y hooks</text>
-      <text x="738" y="382">• permissions, deep links</text>
-      <text x="738" y="402">• device clouds, EAS</text>
-      <text x="738" y="422">• build and CI discipline</text>
+      <text x="738" y="422">• Detox, Maestro, Appium</text>
+      <text x="738" y="442">• RN / Expo layering</text>
+      <text x="738" y="462">• testID and a11y hooks</text>
+      <text x="738" y="482">• permissions, deep links</text>
+      <text x="738" y="502">• device clouds, EAS</text>
+      <text x="738" y="522">• build and CI discipline</text>
     </g>
   </g>
 
   <!-- Documentation-first band -->
   <g class="sans">
-    <rect x="30" y="482" width="900" height="64" rx="12" fill="#0f1a14" stroke="#238636"/>
-    <circle cx="62" cy="514" r="12" fill="#238636"/>
-    <path d="M56,514 L60.5,518.5 L69,509.5" stroke="#e6edf3" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="86" y="509" class="title" font-size="13.5">Documentation-first in every skill</text>
-    <text x="86" y="530" class="muted" font-size="12.5">installed version → official docs (MCP or URL) → confirm the option → cite it → mark unverified if unreachable</text>
+    <rect x="30" y="576" width="900" height="64" rx="12" fill="#0f1a14" stroke="#238636"/>
+    <circle cx="62" cy="608" r="12" fill="#238636"/>
+    <path d="M56,608 L60.5,612.5 L69,603.5" stroke="#e6edf3" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="86" y="603" class="title" font-size="13.5">Documentation-first in every skill</text>
+    <text x="86" y="624" class="muted" font-size="12.5">installed version → official docs (MCP or URL) → confirm the option → cite it → mark unverified if unreachable</text>
   </g>
 </svg>

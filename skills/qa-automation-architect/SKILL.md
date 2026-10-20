@@ -1,6 +1,6 @@
 ---
 name: qa-automation-architect
-description: Architect, bootstrap, audit and evolve test automation frameworks (API, web UI, mobile) in the JS/TS ecosystem - Playwright, Jest, Vitest, Axios, supertest, WebdriverIO, Appium, Detox, Maestro, Allure, BrowserStack, GitHub Actions. Use whenever the user wants to build a test framework from scratch, do a QA automation take-home, restructure or speed up an existing test suite, cut flakiness, review test code, choose test tools, set up CI reporting (Allure, badges, sharding) or write a test strategy/README. Also use when someone just says "add tests to this project", "our e2e is slow or flaky" or "how should I structure tests". Delegates layer detail to qa-api-tests, qa-ui-e2e-tests and qa-mobile-tests.
+description: Architect, bootstrap, audit and evolve test automation frameworks (API, web UI, mobile) in the JS/TS ecosystem - Playwright, Jest, Vitest, Axios, supertest, WebdriverIO, Appium, Detox, Maestro, Allure, BrowserStack, GitHub Actions. Use whenever the user wants to build a test framework from scratch, do a QA automation take-home, restructure or speed up an existing test suite, cut flakiness, review test code, choose test tools, set up CI reporting (Allure, badges, sharding) or write a test strategy/README. Also use when someone just says "add tests to this project", "our e2e is slow or flaky" or "how should I structure tests". Delegates layer detail to qa-unit-tests, qa-api-tests, qa-ui-e2e-tests and qa-mobile-tests.
 ---
 
 # QA Automation Architect
@@ -9,6 +9,7 @@ Industry best practice for test automation frameworks, written so a reviewer's "
 
 When the request is open-ended (new framework, take-home, "add tests", "our suite is slow") and `qa-automation-orchestrator` is installed, start there: it runs the brainstorm, writes the strategy and plan, and routes tasks here. Sibling skills hold the layer-specific detail. Load the one matching the layer you are about to touch:
 
+- `qa-unit-tests` - unit and component tests (Vitest, Jest, node:test, Testing Library), pure-logic extraction, doubles and mocking, coverage and mutation gates.
 - `qa-api-tests` - HTTP clients, schema/contract validation, builders, rate limits, async side effects, supertest, Jest + Axios vs Playwright `request`.
 - `qa-ui-e2e-tests` - Playwright locators, Page Objects and fixtures, auth via storage state, WebdriverIO + BrowserStack, resilient navigation of volatile UIs, visual and responsive checks.
 - `qa-mobile-tests` - Expo/React Native, Appium + WebdriverIO, Detox, Maestro, BrowserStack App Automate, device matrices.
@@ -30,7 +31,7 @@ Push every check to the cheapest layer that can prove it:
 
 | Layer | Proves | Cost | Default share |
 |---|---|---|---|
-| Unit (pure functions, decision logic, parsers) | Logic correctness | ms, no I/O | Most tests |
+| Unit (pure functions, decision logic, parsers, components) - `qa-unit-tests` | Logic correctness | ms, no I/O | Most tests |
 | Component / integration in-process (supertest against `app`, RTL for components) | Wiring of your own code with mocked infrastructure | fast, deterministic | Many |
 | API against a deployed service | Contracts, auth, validation, data isolation | seconds, network | Backbone of e2e confidence |
 | Contract (consumer-driven, Pact or OpenAPI-based) | Consumer and provider agree, without running both | fast | Where services are owned by separate teams |

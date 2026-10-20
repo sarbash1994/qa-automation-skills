@@ -2,7 +2,7 @@
 
 Use when `superpowers:writing-plans` is not available. The plan is the set of decisions the implementer cannot make alone: files, names, signatures, exact values from the strategy, the check that proves each task, and the layer skill plus documentation pages that govern it. A plan longer than the code it describes has written the code instead.
 
-Every task ends with the suite runnable and green (or green plus declared `test.fail` defects). Prefer this order: config and env → HTTP/client layer with one smoke test → fixtures and auth → first endpoint or journey end to end → schema/contract layer → remaining coverage by area → CI and reporting → README and conventions.
+Every task ends with the suite runnable and green (or green plus declared `test.fail` defects). Prefer this order: config and env → unit project for pure logic → HTTP/client layer with one smoke test → fixtures and auth → first endpoint or journey end to end → schema/contract layer → remaining coverage by area → CI and reporting → README and conventions.
 
 ````markdown
 # <Project>: test automation implementation plan
@@ -42,7 +42,7 @@ npm run typecheck && npm run lint && npm run test:api
 
 ### Task N: <component>
 
-**Skill:** `qa-api-tests` | `qa-ui-e2e-tests` | `qa-mobile-tests` | `qa-automation-architect`
+**Skill:** `qa-unit-tests` | `qa-api-tests` | `qa-ui-e2e-tests` | `qa-mobile-tests` | `qa-automation-architect`
 
 **Docs to read first:** the specific pages (e.g. Playwright "Test use options" for `video`, "Reporters"; GitHub Docs "Using custom workflows with GitHub Pages").
 

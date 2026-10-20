@@ -2,6 +2,18 @@
 
 Ground to cover during the conversation. Never read these out as a list; ask one at a time, anchored in a concrete moment, and skip what the request, the repo or recon already answered. Each block lists why it matters and example probes.
 
+## Documentation to ask for (first, as one list)
+
+Why: a contract or an architecture document answers more than any interview, and the strategy must say which inputs it rests on.
+
+- "Is there an OpenAPI/Swagger file or URL, a GraphQL schema, AsyncAPI or protos? A Postman/Bruno collection?"
+- "Any architecture overview, ADRs, sequence diagrams, a data model or ERD, an auth/permissions description?"
+- "Where do user journeys and acceptance criteria live? Is there an analytics event catalogue?"
+- "Can I see the repo layout, existing tests, CI config and the test-data or seeding scripts?"
+- "Which test environment can tests use, and how do I get credentials?"
+
+When nothing exists: ask them to describe the same things in their own words, mark the answers as theirs, and plan a task to derive the API inventory before writing API tests.
+
 ## What is under test and what exists
 
 Why: decides which layer skills are involved and whether this is greenfield, extension or rescue.

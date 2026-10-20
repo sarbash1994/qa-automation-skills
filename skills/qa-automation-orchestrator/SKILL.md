@@ -1,6 +1,6 @@
 ---
 name: qa-automation-orchestrator
-description: Brainstorm, scope, design and plan test automation work before building it, then route execution to the right layer skill. Use this FIRST whenever the user wants to start, extend, rescue or rethink test automation - a new framework, a QA take-home, "add e2e/API/mobile tests", "our tests are slow or flaky", "what should we automate", a test strategy or plan, or a tool choice (Playwright vs Cypress vs WebdriverIO, Detox vs Maestro) - even when they jump straight to "write the tests". Asks the questions that decide the architecture, offers reconnaissance, plays the design back, writes a test-strategy document and a task-by-task plan, then hands tasks to qa-automation-architect, qa-api-tests, qa-ui-e2e-tests or qa-mobile-tests. Works with superpowers brainstorming/writing-plans when installed.
+description: Brainstorm, scope, design and plan test automation work before building it, then route execution to the right layer skill. Use this FIRST whenever the user wants to start, extend, rescue or rethink test automation - a new framework, a QA take-home, "add unit/e2e/API/mobile tests", "our tests are slow or flaky", "what should we automate", a test strategy or plan, or a tool choice - even when they jump straight to "write the tests". Asks for the project's own documentation first (OpenAPI/Swagger, GraphQL schema, architecture docs, ADRs, ERDs, API collections), asks the questions that decide the architecture, offers reconnaissance, plays the design back, writes a test-strategy document and a task-by-task plan, then hands tasks to qa-automation-architect, qa-unit-tests, qa-api-tests, qa-ui-e2e-tests or qa-mobile-tests. Works with superpowers brainstorming/writing-plans when installed.
 ---
 
 # QA Automation Orchestrator
@@ -8,6 +8,7 @@ description: Brainstorm, scope, design and plan test automation work before buil
 You are good at writing tests. You write the suite you believe the team needs, and that belief is usually thinner than it feels: which layer should prove a behaviour, what the target's rate limits and side effects allow, which tool the team can maintain, what "done" means to the person asking. This skill finds that out first, writes it down, and only then routes the work to the layer skills:
 
 - `qa-automation-architect` - framework structure, audits of existing suites, CI/reporting, conventions.
+- `qa-unit-tests` - unit and component tests, pure-logic extraction, doubles and mocking, coverage and mutation gates.
 - `qa-api-tests` - clients, schemas, builders, async side effects, negative matrix.
 - `qa-ui-e2e-tests` - browser suites, locators, Page Objects, auth state, volatile UIs, WDIO/BrowserStack.
 - `qa-mobile-tests` - Detox, Maestro, Appium, device clouds, RN layering.
@@ -32,6 +33,17 @@ Two things, in this order:
 
 That is the whole message.
 
+## Ask for the project's own documentation
+
+Early in the conversation, before proposing anything, ask for the material that describes the system; it replaces a dozen questions and prevents a strategy built on guesses. Ask once, as a short list of what would help, and make clear that partial answers are fine:
+
+- **API contracts**: OpenAPI/Swagger (file or `/swagger`, `/openapi.json`, `/api-docs` URL), GraphQL schema or introspection endpoint, AsyncAPI for events, gRPC protos, Postman/Bruno/Insomnia collections.
+- **Architecture**: README, architecture overview or C4/sequence diagrams, ADRs, service map, data model or ERD, auth/permission model, environments and deployment topology.
+- **Product**: user journeys, acceptance criteria, known defects or incident history, analytics event catalogue.
+- **Engineering**: repo layout, existing tests and CI config, coding conventions, test data and seeding scripts, access to a test environment and the credentials process.
+
+Read what arrives before the next question and fold it into the playback as findings. Where a contract exists, it becomes the source for schemas, generated types and the endpoint inventory; where none exists, say so in the strategy and plan a task to derive one (record traffic with devtools or a proxy, enumerate endpoints from the client code) before writing API tests. When the user cannot share documents, ask them to describe the same things in their words and mark those as their statements.
+
 ## The conversation
 
 Each message ends with one question: a single sentence, no list of example answers hanging off it. Plain language, matched to theirs; no process jargon. Playback and questions alternate.
@@ -41,6 +53,7 @@ Each message ends with one question: a single sentence, no list of example answe
 **Ground to cover.** Territory, not a script; never read these out as a list. The full set with probing questions is in `references/question-territory.md`:
 
 - what is under test (API, web, mobile, all), and what exists today (tests, CI, hooks, docs, a brief for a take-home)
+- which documentation exists and has been handed over (API contracts, architecture, ADRs, data model) and what it leaves unexplained
 - why now, and what success looks like (a green badge, a reviewer's approval, catching a class of bugs, speed)
 - goals, non-goals, anti-goals (what would make this a failure even if it technically works: a flaky suite, a 40-minute pipeline, tests nobody can read)
 - the target's constraints: auth layers, rate limits, side effects of a passing run, data isolation, stable test hooks, environments
@@ -87,13 +100,13 @@ After the document is approved, the next step is the plan, never implementation.
 
 If `superpowers:writing-plans` is installed, invoke it with the strategy document as the spec; it owns the plan format and the execution handoff. Otherwise write the plan yourself with `references/plan-template.md`: header (goal, architecture, stack, spec path), global constraints copied verbatim from the strategy, review focus (the five failure modes most likely to bite that no task's checks cover), file structure, then tasks.
 
-Task boundaries for test frameworks differ from product code: every task ends with the suite **runnable and green** (or green plus declared `test.fail` defects), and each task names the layer skill that implements it and the official documentation pages it must consult. Typical order: config and env → HTTP/client layer with one smoke test → fixtures and auth → first endpoint or journey end to end → schema/contract layer → remaining coverage by area → CI and reporting → README. Self-review the plan against the strategy: every strategy section has a task, every task has a verification command with its expected output, names and signatures agree across tasks, and the plan is not longer than the code it describes.
+Task boundaries for test frameworks differ from product code: every task ends with the suite **runnable and green** (or green plus declared `test.fail` defects), and each task names the layer skill that implements it and the official documentation pages it must consult. Typical order: config and env → unit project for pure logic (when logic exists) → HTTP/client layer with one smoke test → fixtures and auth → first endpoint or journey end to end → schema/contract layer → remaining coverage by area → CI and reporting → README. Self-review the plan against the strategy: every strategy section has a task, every task has a verification command with its expected output, names and signatures agree across tasks, and the plan is not longer than the code it describes.
 
 Save to `docs/superpowers/plans/YYYY-MM-DD-<topic>.md` or `docs/testing/plans/`, link it, and ask the user to review and choose how to execute (task by task in this session, or a fresh subagent per task with a reviewer between tasks) before starting.
 
 ## Execution routing
 
-For each task: load the named layer skill, follow its section 0 (official docs lookup) for every tool-specific setting, implement, run the task's verification command, commit, then move on. Cross-cutting tasks (CI, conventions, README, audit) go to `qa-automation-architect`. When a task reveals that the strategy was wrong (a limiter nobody knew about, no test hooks after all), stop, update the strategy document with the finding and the new decision, and continue only after the user has seen the change.
+For each task: load the named layer skill (`qa-unit-tests`, `qa-api-tests`, `qa-ui-e2e-tests`, `qa-mobile-tests`), follow its section 0 (official docs lookup) for every tool-specific setting, implement, run the task's verification command, commit, then move on. Cross-cutting tasks (CI, conventions, README, audit) go to `qa-automation-architect`. When a task reveals that the strategy was wrong (a limiter nobody knew about, no test hooks after all), stop, update the strategy document with the finding and the new decision, and continue only after the user has seen the change.
 
 ## Existing suite mode
 
@@ -110,3 +123,4 @@ When the request is about a suite that already exists ("make it faster", "it is 
 | "I know this config option" | Options drift. The layer skill's documentation protocol decides. |
 | "They said 'sounds good' to the idea" | Approval covers what they saw. An unwritten strategy is not approved. |
 | "Cross-browser everything" | Business flows with side effects run on one engine; rendering checks run on three. |
+| "There is no API doc, I'll infer the endpoints as I go" | Ask for Swagger/OpenAPI, a schema or a collection first; if none exists, derive an inventory as a task before writing tests. |

@@ -8,8 +8,9 @@ Compatible with any agent that reads `SKILL.md` files (Claude Code, Codex, Curso
 
 | Skill | Use it when | Covers |
 |---|---|---|
-| [`qa-automation-orchestrator`](skills/qa-automation-orchestrator/SKILL.md) | Any open-ended testing request: a new framework, a QA take-home, "add tests", "our suite is slow or flaky", a tool choice | Brainstorm one question at a time, reconnaissance, playback, a written test-strategy document, a task-by-task plan, routing to the skills below. Works alongside `superpowers:brainstorming` / `writing-plans` when installed. |
+| [`qa-automation-orchestrator`](skills/qa-automation-orchestrator/SKILL.md) | Any open-ended testing request: a new framework, a QA take-home, "add tests", "our suite is slow or flaky", a tool choice | Brainstorm one question at a time, a request for the project's own documentation (OpenAPI/Swagger, schemas, architecture, ADRs), reconnaissance, playback, a written test-strategy document, a task-by-task plan, routing to the skills below. Works alongside `superpowers:brainstorming` / `writing-plans` when installed. |
 | [`qa-automation-architect`](skills/qa-automation-architect/SKILL.md) | Framework structure, audits of existing suites, tool decisions, CI and reporting | Test pyramid, recon-first design, layering (config, core, clients, schemas, data, fixtures, pages, tests), determinism and flake policy, defects as tests, audit checklist, README template, conventions, Allure + GitHub Pages + sharding, BrowserStack, result aggregation |
+| [`qa-unit-tests`](skills/qa-unit-tests/SKILL.md) | Unit and component tests, TDD, mocking, coverage | Vitest, Jest, node:test; React Testing Library (web and React Native); what belongs in a unit test vs higher layers; pure-logic extraction; doubles and msw at the network boundary; fake timers; coverage thresholds, mutation testing (Stryker), property-based tests (fast-check) |
 | [`qa-api-tests`](skills/qa-api-tests/SKILL.md) | REST/GraphQL API suites and the client layer under them | Playwright `request`, Jest/Vitest + Axios, Jest + supertest recipes; AJV/OpenAPI/Pact contracts; faker builders; 429-aware retry; baseline-count polling for async side effects; negative-test matrix |
 | [`qa-ui-e2e-tests`](skills/qa-ui-e2e-tests/SKILL.md) | Browser end-to-end and UI suites | Locator strategy, thin Page Objects and fixtures, storage-state auth, cross-browser and responsive projects, visual regression, axe accessibility, resilient navigation of volatile A/B-tested funnels, WebdriverIO + BrowserStack |
 | [`qa-mobile-tests`](skills/qa-mobile-tests/SKILL.md) | React Native/Expo and native iOS/Android apps | Layering under device tests, Detox, Maestro, Appium + WebdriverIO, BrowserStack App Automate, test hooks, build and CI discipline |
@@ -18,7 +19,7 @@ Start with the orchestrator; it decides the size of the work and hands tasks to 
 
 ## Install
 
-With the [`skills`](https://github.com/vercel-labs/skills) CLI. All five skills in one command (project-level, into every supported agent):
+With the [`skills`](https://github.com/vercel-labs/skills) CLI. All six skills in one command (project-level, into every supported agent):
 
 ```bash
 npx skills add sarbash1994/qa-automation-skills --all
@@ -47,7 +48,7 @@ Manual install for Claude Code: copy a `skills/<name>/` directory into `.claude/
 ## How the skills work together
 
 <p align="center">
-  <img src="docs/skills-diagram.svg?v=2" alt="The orchestrator brainstorms, writes a test strategy and a plan, then routes each task to the architect, API, UI e2e or mobile skill; every skill verifies tool details against official documentation" width="960">
+  <img src="docs/skills-diagram.svg?v=3" alt="The orchestrator brainstorms, writes a test strategy and a plan, then routes each task to the architect, API, UI e2e or mobile skill; every skill verifies tool details against official documentation" width="960">
 </p>
 
 Every skill has a `references/official-docs.md` with a lookup protocol (installed version → documentation MCP or official URL → confirm the option → cite it → mark unverified if unreachable) and a map of official documentation pages for the tools it covers.
