@@ -53,6 +53,7 @@ describe('calculateLineTotal', () => {
 - Snapshot tests only for stable serialised output you actually review (an error message catalogue, a generated config); never for whole component trees.
 - Async: `await` the promise, assert the resolved value or `rejects.toThrow`; use fake timers (`vi.useFakeTimers`, `vi.setSystemTime`) for time-dependent code and restore them in `afterEach`.
 - Prefer `test.failing`/`it.fails` for documented bugs over skipping.
+- No logic or helper definitions inside the spec file; see the shared test code rules in `qa-automation-architect/references/test-code-rules.md`.
 
 ## 4. Test doubles and mocking
 
@@ -82,6 +83,7 @@ Details: `references/quality-gates.md`.
 
 ## 7. Review checklist for a unit spec
 
+- Logic-free spec: no branches, loops, try/catch or helper definitions in the file; literal expectations; one behaviour per test (tables and named lifecycle tests excepted); no coupling between tests; no noise. Full rules and lint: `qa-automation-architect/references/test-code-rules.md`.
 - Title states the rule; test would fail if the rule were broken and pass if the implementation were rewritten correctly.
 - No I/O, real clock or randomness; doubles only at boundaries you do not own.
 - Expected values come from the spec, not from running the code.

@@ -34,7 +34,7 @@ Tool behaviour, option names, defaults and CLI flags change between releases. Be
 | Jest configuration, CLI, `test.failing`, ESM support | https://jestjs.io/docs/configuration , https://jestjs.io/docs/cli , https://jestjs.io/docs/api , https://jestjs.io/docs/ecmascript-modules |
 | Vitest configuration and API | https://vitest.dev/config/ , https://vitest.dev/api/ |
 | WebdriverIO configuration, CLI, reporters, services | https://webdriver.io/docs/configuration , https://webdriver.io/docs/configurationfile , https://webdriver.io/docs/allure-reporter , https://webdriver.io/docs/cloudservices , https://github.com/webdriverio/webdriverio/blob/main/packages/wdio-browserstack-service/README.md |
-| ESLint plugins for tests | https://github.com/playwright-community/eslint-plugin-playwright , https://github.com/jest-community/eslint-plugin-jest |
+| ESLint plugins for tests (rule names for test-code-rules.md) | https://github.com/playwright-community/eslint-plugin-playwright , https://github.com/jest-community/eslint-plugin-jest , https://github.com/vitest-dev/eslint-plugin-vitest , https://github.com/lo1tuma/eslint-plugin-mocha , https://eslint.org/docs/latest/rules/no-restricted-syntax |
 
 ### Reporting
 

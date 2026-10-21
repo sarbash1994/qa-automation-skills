@@ -67,6 +67,7 @@ Permission denied flows, offline → online sync (airplane mode via `device.setN
 
 ## 8. Review checklist for a mobile spec
 
+- Logic-free spec: no branches, loops, try/catch or helper definitions in the file; literal expectations; one behaviour per test (tables and named lifecycle tests excepted); no coupling between tests; no noise. Full rules and lint: `qa-automation-architect/references/test-code-rules.md`.
 - Journey a user would notice; not re-testing API validation on a device.
 - Hooks by testID/accessibility id; no text-based control lookup; no positional selectors without reason.
 - Fresh state and granted permissions at launch; unique data; API seeding and cleanup.

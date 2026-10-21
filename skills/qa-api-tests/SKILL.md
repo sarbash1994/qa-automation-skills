@@ -65,6 +65,7 @@ When the API is wrong, write the test for the correct behaviour and mark it `tes
 
 ## 10. Review checklist for an API spec
 
+- Logic-free spec: no branches, loops, try/catch or helper definitions in the file; literal expectations; one behaviour per test (tables and named lifecycle tests excepted); no coupling between tests; no noise. Full rules and lint: `qa-automation-architect/references/test-code-rules.md`.
 - Title states the outcome, with status/message when that is the contract.
 - Body is call then assertions; no inline login/seed (fixtures), no literal payload variants (builders).
 - Exact status for documented codes; `>= 400` only where the server is inconsistent and the README says so.

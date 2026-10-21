@@ -69,7 +69,8 @@ npm run typecheck && npm run lint && npm run test:api
 3. Names and signatures agree across tasks.
 4. Every Review Focus line has its check in a task.
 5. Each task names its skill and its documentation pages.
-6. Proportion: the plan is shorter than the code it describes.
+6. Tasks that write specs state that spec files follow the shared test code rules (logic-free, literal expectations, one behaviour per test).
+7. Proportion: the plan is shorter than the code it describes.
 
 ## Handoff
 

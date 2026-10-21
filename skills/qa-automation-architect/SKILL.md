@@ -85,6 +85,7 @@ tests/<layer>/   api/ e2e/ unit/ visual/ - one file per endpoint group or journe
 - Flaky test policy: quarantine with an owner and a deadline (`test.fixme` / `test.fail` with reason), never silent skips; track flake rate per test in the report.
 - Freeze time, locale, timezone and viewport in config (`timezoneId`, `locale`, `Date` mocking) so results do not depend on the runner.
 - Disable animations in the browser fixture when the target animates; bound secondary DOM reads with short timeouts when elements may belong to an outgoing screen.
+- Spec files stay logic-free and readable top to bottom: no branches, loops, try/catch or helper definitions inside them, literal expectations, one behaviour per test. The full set with the lint rules that enforce it is `references/test-code-rules.md`; apply it in every layer and in every review.
 
 ## 5. Defects, skips and known issues
 
@@ -124,5 +125,5 @@ Verify option names and the current recommended setup against the official docs 
 - CI: matrix per project (and `--shard` when a project is long), `fail-fast: false`, artifacts `if: ${{ !cancelled() }}`, merged report with history and badge (`references/ci-and-reporting.md`).
 - Quality gates: typecheck + lint on PR; flake budget; coverage thresholds only for modules with dedicated unit tests.
 - README per `references/readme-template.md`: TL;DR, recon, architecture + design choices, coverage, findings, CI, and the reflective sections (why this way, what was given up, next steps, scaling).
-- Code style per `references/conventions.md`.
+- Code style per `references/conventions.md`; spec files pass `references/test-code-rules.md` and its lint rules.
 - Every tool-specific setting in the deliverable traced to an official doc page read during the task (section 0).

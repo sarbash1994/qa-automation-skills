@@ -41,6 +41,7 @@ Work through this before proposing changes. Collect evidence (file paths, timing
 
 ## D. Readability
 
+- [ ] Spec files are logic-free: no branches, loops, try/catch or helper definitions inside them; literal expectations; one behaviour per test (see `test-code-rules.md`).
 - [ ] Test titles read as outcomes ("rejects a todo without a title", not "test todo 3").
 - [ ] Tags/annotations per layer (`@api`, `@e2e`, `@defect`) for selective runs and report filtering.
 - [ ] Types for domain models derived from real responses (`UserProfile`, `AnalyticsEvent`), including noted inconsistencies.

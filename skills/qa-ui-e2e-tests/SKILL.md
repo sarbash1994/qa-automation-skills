@@ -72,6 +72,7 @@ Choose WDIO when you need Appium and web in one runner, an existing Selenium gri
 
 ## 9. Review checklist for a UI spec
 
+- Logic-free spec: no branches, loops, try/catch or helper definitions in the file; literal expectations; one behaviour per test (tables and named lifecycle tests excepted); no coupling between tests; no noise. Full rules and lint: `qa-automation-architect/references/test-code-rules.md`.
 - Title names the user-visible outcome; the test would be noticed by a user if it failed.
 - No UI login except the login test; state seeded via API/fixtures.
 - Locators by role/label/test id; no class/position selectors.

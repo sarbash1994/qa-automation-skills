@@ -24,6 +24,8 @@ Include the status code or exact message in the title when that is the contract 
 
 ## Test body shape
 
+The rules for what may and may not appear inside a spec file (no logic, no helper definitions, literal expectations, one behaviour per test, named exceptions) are in `test-code-rules.md`; this section covers shape only.
+
 ```ts
 test('rejects a todo without a title', async ({ sharedUser }) => {
   const res = await sharedUser.api.createTodo('');          // call
@@ -50,7 +52,7 @@ Write them for the person who will be tempted to simplify the code:
 ## Tooling gates
 
 - `typecheck`: `tsc --noEmit` (TS) or `tsc --noEmit --allowJs --checkJs` with `// @ts-check` (JS).
-- `lint`: ESLint flat config with `eslint-plugin-playwright` (forbids `page.waitForTimeout`, `.first()` without reason via `no-nth-methods`, missing `await` on expects) or `eslint-plugin-jest`; Prettier for formatting; Husky + lint-staged pre-commit; conventional commits.
+- `lint`: ESLint flat config with `eslint-plugin-playwright` (forbids `page.waitForTimeout`, `.first()` without reason via `no-nth-methods`, missing `await` on expects) or `eslint-plugin-jest`/`eslint-plugin-vitest`, plus the spec-file rules from `test-code-rules.md` §11 (`no-conditional-in-test`, `no-conditional-expect`, `expect-expect`, `no-focused-tests`, `no-restricted-syntax` for branches, loops, try/catch and helper declarations in spec files); Prettier for formatting; Husky + lint-staged pre-commit; conventional commits.
 - Dependencies pinned via lockfile, updated by Renovate/Dependabot; Playwright kept current because browser versions ship with it.
 
 ## TypeScript
