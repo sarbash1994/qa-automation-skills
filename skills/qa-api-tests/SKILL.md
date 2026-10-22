@@ -5,7 +5,7 @@ description: Design, write and review REST/GraphQL API test suites and their cli
 
 # API Tests
 
-Target: a spec file that reads as "call the client, assert status and body", above a thin HTTP layer that never throws on status codes, schemas that act as contracts, builders that make every negative case one override away, and polling that does not depend on clocks. Complete per-runner recipes live in `references/`; read the one you need before generating code.
+Target: a spec file that reads as "call the client, assert status and body", above a thin HTTP layer that never throws on status codes, schemas that act as contracts, builders that make every negative case one override away, and polling that does not depend on clocks. Complete per-runner recipes live in `references/`; read the one you need before generating code. References to sibling skills (`qa-automation-architect` for framework-wide structure) apply only when they are installed; otherwise continue with this skill and the project's conventions.
 
 ## 0. Verify against official documentation before answering
 

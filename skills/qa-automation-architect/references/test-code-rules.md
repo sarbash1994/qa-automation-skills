@@ -1,6 +1,15 @@
 # Test code rules
 
-Rules for the code inside spec files, shared by every layer (unit, API, UI, mobile). They exist for one reason: when a test fails, its title should say what broke, and a reader should understand the test top to bottom without leaving the file. Enforce the mechanical ones with lint (section 11); treat the size budgets as guidance.
+Rules for the code inside spec files, shared by every layer (unit, API, UI, mobile). They exist for one reason: when a test fails, its title should say what broke, and a reader should understand the test top to bottom without leaving the file. Enforce the mechanical ones with lint (section 11); treat the size budgets as guidance. They apply to spec files run by a test runner (Vitest, Jest, Playwright Test, WebdriverIO, Detox, node:test). Hand-rolled scripts that assert with `fetch` and regexes are a different genre: an audit should first propose adopting a runner, not count their loops as violations.
+
+## 0. Applying the rules to an existing suite
+
+The rules are mandatory for new tests and for tests you change. For the rest of an existing suite they are audit findings, prioritised by how many tests each touches and by how often that code changes, never a demand to rewrite everything. Concretely:
+
+- Lint: enable the rules as warnings with today's count as the baseline (`--max-warnings <n>`, or apply the `no-restricted-syntax` overrides only to new directories); ratchet the number down as files are touched; switch to errors once the baseline is zero.
+- Migration: move tests onto fixtures and builders one file at a time inside the slices the audit proposed; each slice leaves the suite green.
+- Review: a PR that touches a test is held to the rules for the lines it touches, not for the whole file.
+- Never block delivery of a bug fix on refactoring the surrounding tests.
 
 ## 1. No logic in a spec file
 

@@ -1,11 +1,11 @@
 ---
 name: qa-ui-e2e-tests
-description: Design, write and stabilise browser end-to-end and UI test suites - Playwright (TypeScript) first, WebdriverIO v9 for Selenium/Appium/BrowserStack needs - covering locator strategy, Page Objects and fixtures, auth via storage state, cross-browser and responsive projects, visual regression (toHaveScreenshot), accessibility (axe), UI-to-backend cross-checks and resilient navigation of volatile A/B-tested funnels. Use whenever the user mentions e2e, UI tests, browser automation, Playwright, WebdriverIO, Cypress migration, Page Object, selectors or locators, flaky UI tests, screenshots, BrowserStack web, or wants to automate a signup, checkout or quiz flow; also to review or refactor an existing UI suite.
+description: Design, write and stabilise browser end-to-end and UI test suites with Playwright Test (TypeScript) or WebdriverIO v9 - locator strategy (roles, labels, test ids), Page Objects and custom fixtures, authentication via storage state, cross-browser and responsive projects, visual regression with toHaveScreenshot, axe accessibility checks, UI-to-backend cross-checks, resilient navigation of volatile A/B-tested funnels, BrowserStack for the web matrix. Use when the user wants e2e or UI tests written, reviewed or made less flaky, asks about Page Objects, locators or selectors, Playwright fixtures or config, storage-state login, WebdriverIO, or migrating a Cypress/Selenium suite. Not for driving a browser interactively to check or debug a page (a browser-automation or webapp-testing skill does that), nor for API-only or mobile-device suites (see the sibling qa skills).
 ---
 
 # UI and E2E Tests
 
-Target: few, high-value browser journeys that run in parallel, authenticate once, seed data through the API, locate elements the way users do, and fail with a trace that explains itself. Everything below follows the Playwright team's own best-practice guidance plus hard-won patterns for hostile targets; `references/` has complete code.
+Target: few, high-value browser journeys that run in parallel, authenticate once, seed data through the API, locate elements the way users do, and fail with a trace that explains itself. Everything below follows the Playwright team's own best-practice guidance plus hard-won patterns for hostile targets; `references/` has complete code. References to sibling skills apply only when they are installed; otherwise continue with this skill and the project's conventions.
 
 ## 0. Verify against official documentation before answering
 

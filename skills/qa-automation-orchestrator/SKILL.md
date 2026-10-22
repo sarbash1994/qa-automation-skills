@@ -1,6 +1,6 @@
 ---
 name: qa-automation-orchestrator
-description: Brainstorm, scope, design and plan test automation work before building it, then route execution to the right layer skill. Use this FIRST whenever the user wants to start, extend, rescue or rethink test automation - a new framework, a QA take-home, "add unit/e2e/API/mobile tests", "our tests are slow or flaky", "what should we automate", a test strategy or plan, or a tool choice - even when they jump straight to "write the tests". Asks for the project's own documentation first (OpenAPI/Swagger, GraphQL schema, architecture docs, ADRs, ERDs, API collections), asks the questions that decide the architecture, offers reconnaissance, plays the design back, writes a test-strategy document and a task-by-task plan, then hands tasks to qa-automation-architect, qa-unit-tests, qa-api-tests, qa-ui-e2e-tests or qa-mobile-tests. Works with superpowers brainstorming/writing-plans when installed.
+description: Brainstorm, scope, design and plan sizeable test automation work before building it, then route tasks to the layer skills. Use for a new test framework or suite, a QA automation take-home, an audit or rescue of an existing suite ("slow", "flaky", "nobody trusts it"), a test strategy or plan, a tool or architecture choice, or work that spans several layers (unit + API + e2e). Collects the project's own documentation first (OpenAPI/Swagger, GraphQL schema, architecture docs, ADRs, API collections), asks the questions that decide the architecture, writes a test-strategy document and a task-by-task plan, then hands tasks to qa-automation-architect, qa-unit-tests, qa-api-tests, qa-ui-e2e-tests or qa-mobile-tests. Not for a single concrete test in a suite that already has its runner, fixtures and conventions; go straight to the matching layer skill. Works with superpowers brainstorming/writing-plans when installed.
 ---
 
 # QA Automation Orchestrator
@@ -13,13 +13,19 @@ You are good at writing tests. You write the suite you believe the team needs, a
 - `qa-ui-e2e-tests` - browser suites, locators, Page Objects, auth state, volatile UIs, WDIO/BrowserStack.
 - `qa-mobile-tests` - Detox, Maestro, Appium, device clouds, RN layering.
 
-Each of those carries a "verify against official documentation before answering" protocol. Anything tool-specific that ends up in the strategy or plan (an option, a flag, an action input) must come through that protocol, not from memory.
+The set installs selectively; if a skill named below is not installed, keep its responsibilities in this skill's plan and do the work with the guidance here and the project's conventions. Each of those carries a "verify against official documentation before answering" protocol. Anything tool-specific that ends up in the strategy or plan (an option, a flag, an action input) must come through that protocol, not from memory.
+
+## Fast path: when not to run this skill
+
+Most requests in a project that already has a test suite do not need a brainstorm. Before anything else, check the repo: is there a runner config, are there fixtures or builders, do existing specs show the conventions? If yes and the request names a concrete thing ("add e2e for checkout", "cover `DELETE /todos/:id`", "a unit test for the pricing helper", "fix this flaky test"), skip the questions, the strategy and the plan: load the matching layer skill, follow the existing conventions, do the work and say what you did. Ask at most one question, and only if the answer changes what gets built (which user role, which environment). The gate below does not apply to this path.
+
+Run the full process when one of these is true: no suite exists yet; the request is a take-home or a new framework; the user asks for a strategy, an audit, a plan or a tool choice; the work spans several layers; the existing suite is the problem ("slow", "flaky", "unmaintainable"); or the conventions in the repo contradict each other and someone has to decide.
 
 ## First: what do you actually know?
 
 Before replying, ask yourself what you know about what they want and why.
 
-- **Everything that matters is in the request** ("add a 404 test for `GET /todos/:id`", "rename this fixture"). Quick, clear task: do it through the matching layer skill and say what you did.
+- **Everything that matters is in the request** (the fast path above). Do it and say what you did.
 - **Something non-trivial is missing** (which layer, which tool, what the target allows, what success looks like). Start the conversation.
 
 If the project already has a test-strategy document or an audit report (look in `docs/`, `TESTING.md`, `docs/superpowers/specs/`), read it before asking anything; do not re-ask what it answers.
@@ -89,7 +95,7 @@ For a project, write a document a competent QA engineer could plan from without 
 **Builder check:** before handing the document over, dispatch a fresh subagent with `references/builder-check-prompt.md`. Tell the user a reviewer reads it first and you may come back once with a few questions. Sort what comes back into: answered already (put the answer in), minor (settle it, mark as your call), theirs (only they can answer and it changes what gets built). Bring the "theirs" pile in one message, most important first. Without a subagent tool, read the document as that builder yourself.
 
 <HARD-GATE>
-Nothing gets built until the user approves the full description: in chat for a small change, the document for a project. Building includes scaffolding a framework, installing test dependencies, writing spec files, editing CI, and invoking a layer skill to implement. Reading, running the existing suite and recon are fine.
+Applies to the project size only (the fast path and small changes are exempt). Nothing gets built until the user approves the full description: in chat for a small change that went through the conversation, the document for a project. Building includes scaffolding a framework, installing test dependencies, writing spec files, editing CI, and invoking a layer skill to implement. Reading, running the existing suite and recon are fine.
 
 Exceptions: they opted out of the questions (the skill is done and the gate goes with it); a spike they said yes to (stays throwaway).
 

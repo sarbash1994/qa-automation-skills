@@ -5,7 +5,7 @@ description: Plan, build and review mobile test automation for React Native/Expo
 
 # Mobile Tests
 
-Target: a thin device suite that proves the critical journeys on real OS versions, sitting on top of fast unit, component and web-build checks that catch most regressions without a simulator. Device tests are the slowest and flakiest layer you will own; spend them deliberately. Per-tool recipes are in `references/`; verify current setup steps against the tool docs (Context7) before generating config, because Expo, Detox and Maestro change quickly.
+Target: a thin device suite that proves the critical journeys on real OS versions, sitting on top of fast unit, component and web-build checks that catch most regressions without a simulator. Device tests are the slowest and flakiest layer you will own; spend them deliberately. Per-tool recipes are in `references/`; verify current setup steps against the tool docs (Context7) before generating config, because Expo, Detox and Maestro change quickly. References to sibling skills apply only when they are installed; otherwise continue with this skill and the project's conventions.
 
 ## 0. Verify against official documentation before answering
 

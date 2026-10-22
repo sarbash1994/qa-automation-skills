@@ -7,7 +7,7 @@ description: Architect, bootstrap, audit and evolve test automation frameworks (
 
 Industry best practice for test automation frameworks, written so a reviewer's "why did you build it this way" has an answer for every decision. The rules below are the consensus of the Playwright, WebdriverIO, Jest and Allure teams' own guidance plus widely accepted engineering practice (test pyramid, deterministic tests, contract-first, shift-left). They tell you *what* to decide; the exact option names, defaults and CLI flags of each tool come from its official documentation, looked up at answer time (section 0).
 
-When the request is open-ended (new framework, take-home, "add tests", "our suite is slow") and `qa-automation-orchestrator` is installed, start there: it runs the brainstorm, writes the strategy and plan, and routes tasks here. Sibling skills hold the layer-specific detail. Load the one matching the layer you are about to touch:
+When the request is open-ended (new framework, take-home, "add tests", "our suite is slow") and `qa-automation-orchestrator` is installed, start there: it runs the brainstorm, writes the strategy and plan, and routes tasks here. Sibling skills hold the layer-specific detail; the set installs selectively, so if one is missing, apply this skill's rules directly. Load the one matching the layer you are about to touch:
 
 - `qa-unit-tests` - unit and component tests (Vitest, Jest, node:test, Testing Library), pure-logic extraction, doubles and mocking, coverage and mutation gates.
 - `qa-api-tests` - HTTP clients, schema/contract validation, builders, rate limits, async side effects, supertest, Jest + Axios vs Playwright `request`.

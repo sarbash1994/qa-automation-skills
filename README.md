@@ -45,6 +45,17 @@ The CLI records what it installed in `skills-lock.json`; on another machine `npx
 
 Manual install for Claude Code: copy a `skills/<name>/` directory into `.claude/skills/` of a project (or `~/.claude/skills/` for every project) and start a new session.
 
+## Which skills for which project
+
+The set installs selectively; each skill works on its own and treats references to siblings as optional.
+
+| Situation | Install |
+|---|---|
+| A product with an existing test suite you want to keep healthy | `qa-unit-tests`, `qa-api-tests`, `qa-ui-e2e-tests`, and `qa-automation-architect` for its audit checklist and review conventions |
+| A new framework, a take-home, a strategy or a multi-layer effort | add `qa-automation-orchestrator` |
+| A React Native / native mobile app | add `qa-mobile-tests` |
+| CI reporting, Allure, BrowserStack, sharding | `qa-automation-architect` |
+
 ## How the skills work together
 
 <p align="center">
