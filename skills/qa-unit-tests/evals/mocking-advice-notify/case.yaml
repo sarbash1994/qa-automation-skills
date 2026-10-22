@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: mocking-advice-notify
+expected_outcome: |
+  Mocks at the boundaries: msw (or a fetch stub) for the two HTTP calls and vi.useFakeTimers/vi.setSystemTime for Date.now, restored in afterEach; covers sent, skipped (no readyAt), skipped (older than an hour), lookup failure throws; suggests a seam (inject now()/http) as a refactor; no mocking of the module under test; cites docs for the mocking APIs used.
+context:
+  scaffold_script: place-files.sh

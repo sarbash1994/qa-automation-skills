@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: audit-existing-suite
+expected_outcome: |
+  Produces an audit report with three lists (harmful now, missing, fine as is) and migration slices; identifies checkout.spec.ts smells (UI login per test, waitForTimeout, CSS selectors, try/catch, logic/helper functions in spec, hardcoded URL, positional selector) and credits cart.spec.ts/CartPage/fixtures/storage-state as fine; proposes slices that keep the suite green; no files modified.
+context:
+  scaffold_script: place-files.sh

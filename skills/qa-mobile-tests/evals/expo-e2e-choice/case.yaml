@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: expo-e2e-choice
+expected_outcome: |
+  Recommends layering first (unit/component with RNTL, Playwright on web build) under a small device suite; picks Detox or Maestro with reasons (Expo native builds, simulators in CI), Appium only for real-device clouds; testID/accessibilityLabel hooks as a prerequisite; release-like builds via EAS, android-emulator-runner + macOS runner; smoke on PR, matrix nightly; cites official docs (Detox/Maestro/Expo).

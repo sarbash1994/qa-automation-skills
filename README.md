@@ -64,6 +64,50 @@ The set installs selectively; each skill works on its own and treats references 
 
 Every skill has a `references/official-docs.md` with a lookup protocol (installed version → documentation MCP or official URL → confirm the option → cite it → mark unverified if unreachable) and a map of official documentation pages for the tools it covers.
 
+## What the skills change: before and after
+
+The flaky spec that ships in the `shop-web` eval fixture, as a team might inherit it:
+
+```ts
+async function login(page) { await page.goto('http://localhost:3000/login'); await page.fill('#email', 'qa@example.com'); /* ... */ await page.waitForTimeout(2000); }
+function expectedTotal(items) { let total = 0; for (const i of items) total += i.price * i.qty; return total.toFixed(2); }
+
+test('checkout works', async ({ page }) => {
+  await page.click('.product-card:nth-child(1) .add');
+  await page.waitForTimeout(1000);
+  if (await page.locator('.coupon-banner').isVisible()) { await page.fill('.coupon-input', 'WELCOME10'); /* ... */ }
+  try { await page.click('text=Checkout'); } catch (e) { await page.click('.checkout-btn'); }
+  await page.waitForTimeout(3000);
+  expect(await page.locator('.summary .total').textContent()).toContain(expectedTotal(items));
+  await page.click('button >> nth=2');
+});
+```
+
+The same journey after `qa-ui-e2e-tests` (an actual eval output, trimmed): project fixtures, storage-state auth, API seeding, a thin page object, literal oracles, one behaviour per test, no logic in the spec.
+
+```ts
+import { test, expect } from '../../src/fixtures/test-fixtures';
+
+test.describe('Checkout @e2e', () => {
+  test.beforeEach(async ({ shopApi }) => { await shopApi.clearCart(); await shopApi.addToCart('SKU-100'); });
+
+  test('WELCOME10 lowers the order total by 10%', async ({ checkoutPage }) => {
+    await checkoutPage.open();
+    await checkoutPage.applyCoupon('WELCOME10');
+    await expect(checkoutPage.total).toHaveText('11.25');
+  });
+
+  test('an unknown coupon shows "Coupon not found" and leaves the total unchanged', async ({ checkoutPage }) => {
+    await checkoutPage.open();
+    await checkoutPage.applyCoupon('NO-SUCH-CODE');
+    await expect(checkoutPage.couponError).toHaveText('Coupon not found');
+    await expect(checkoutPage.total).toHaveText('12.50');
+  });
+});
+```
+
+Evaluation method and results: [`evals/README.md`](evals/README.md).
+
 ## Layout
 
 ```

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: api-suite-from-openapi
+expected_outcome: |
+  Framework with config/env, an ApiClient (methods 1:1 with endpoints, returns raw APIResponse), worker-scoped shared authenticated user fixture (one login per worker because of the 40/15min limit), 429-aware retry honouring Retry-After, schema validation of responses against openapi.yaml components (AJV), specs for auth/todos with negatives (missing title, too long, malformed id 400, missing id 404, no token 401, invalid limit 400), no try/catch negatives, .env.example, scripts; cites Playwright docs.
+context:
+  scaffold_script: place-files.sh
