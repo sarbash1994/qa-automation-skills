@@ -1,0 +1,13 @@
+{
+  "name": "qa-automation-skills",
+  "owner": { "name": "sarbash1994", "url": "https://github.com/sarbash1994" },
+  "metadata": { "description": "Agent skills for designing, building and maintaining test automation frameworks." },
+  "plugins": [
+    {
+      "name": "qa-automation-skills",
+      "source": "./",
+      "description": "Agent skills for designing, building and maintaining test automation frameworks: strategy, unit, API, UI/e2e and mobile tests.",
+      "category": "testing"
+    }
+  ]
+}

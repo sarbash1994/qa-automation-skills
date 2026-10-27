@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+
+# claude plugin eval output
+evals/results/
+evals/routing/results/

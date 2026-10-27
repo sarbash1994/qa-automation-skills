@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: fast-path-existing-suite
+expected_outcome: |
+  Recognises an existing suite with conventions and goes straight to writing the spec: no brainstorming questions, no strategy document; new spec uses the existing fixtures (cartPage/shopApi), a page object for checkout (extending BasePage, getByTestId/roles), seeds via API, web-first assertions, no sleeps, no logic in the spec file; mentions existing conventions.
+context:
+  scaffold_script: place-files.sh

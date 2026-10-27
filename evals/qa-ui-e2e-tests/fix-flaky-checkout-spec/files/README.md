@@ -1,0 +1,2 @@
+# shop-web e2e
+Playwright suite for the shop storefront. Conventions: Page Objects in src/pages (getByTestId + roles), fixtures in src/fixtures, API seeding via src/api/ShopApi, auth via storage state (tests/auth.setup.ts). The checkout page has data-testid hooks: coupon-input, coupon-apply, coupon-error, order-summary-total, place-order, order-confirmation. Coupon rules: WELCOME10 gives 10% off; an unknown code shows "Coupon not found" in [data-testid=coupon-error]. Catalogue: SKU-100 costs 12.50; totals are shown as bare numbers with two decimals (for example 12.50).

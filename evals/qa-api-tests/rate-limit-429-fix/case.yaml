@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: rate-limit-429-fix
+expected_outcome: |
+  Diagnoses the strict limiter (40/900s) as a design constraint: one login per worker via a worker-scoped fixture (shared user/token), fresh login only where isolation is essential; adds a 429 retry wrapper that honours Retry-After with a cap and fails fast with a clear message for the strict limiter; keeps tests parallel-ready; cites fixtures docs.
+context:
+  scaffold_script: place-files.sh

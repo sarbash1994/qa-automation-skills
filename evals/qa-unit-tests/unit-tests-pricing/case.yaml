@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: unit-tests-pricing
+expected_outcome: |
+  Creates src/pricing.test.ts with Vitest: covers lineTotal (pcs with fee, kg/m without fee, invalid step, made-to-order limit), applyDiscount (bounds, rounding), formatQty, isValidQty edge cases; uses it.each tables; literal expected values; no logic/helpers in the spec; no network; outcome-style titles.
+context:
+  scaffold_script: place-files.sh

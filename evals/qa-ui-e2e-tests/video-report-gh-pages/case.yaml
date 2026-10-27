@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: video-report-gh-pages
+expected_outcome: |
+  Reads the official Playwright pages (videos, reporters) and GitHub Pages/actions READMEs; sets use.video ('retain-on-failure') and keeps the html reporter; adds a workflow with permissions pages/id-token, upload-artifact for the report, configure-pages/upload-pages-artifact/deploy-pages, with env secrets; cites pages used; does not invent option names.
+context:
+  scaffold_script: place-files.sh

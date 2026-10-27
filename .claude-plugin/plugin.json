@@ -1,0 +1,23 @@
+{
+  "name": "qa-automation-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for designing, building and maintaining test automation frameworks: strategy, unit, API, UI/e2e and mobile tests.",
+  "author": {
+    "name": "sarbash1994",
+    "url": "https://github.com/sarbash1994"
+  },
+  "homepage": "https://github.com/sarbash1994/qa-automation-skills",
+  "repository": "https://github.com/sarbash1994/qa-automation-skills",
+  "license": "MIT",
+  "keywords": [
+    "testing",
+    "qa",
+    "test-automation",
+    "playwright",
+    "vitest",
+    "jest",
+    "webdriverio",
+    "browserstack"
+  ],
+  "icon": ".claude-plugin/icon.png"
+}

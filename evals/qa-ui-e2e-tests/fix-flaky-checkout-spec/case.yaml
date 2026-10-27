@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: fix-flaky-checkout-spec
+expected_outcome: |
+  Rewrites using project fixtures and a CheckoutPage page object with getByTestId/roles; removes UI login (storage state exists), sleeps, CSS/#id selectors, try/catch, in-spec helpers and computed totals; web-first assertions; seeds via ShopApi; splits into focused tests (coupon applied, order placed); literal expected total; no logic in spec.
+context:
+  scaffold_script: place-files.sh

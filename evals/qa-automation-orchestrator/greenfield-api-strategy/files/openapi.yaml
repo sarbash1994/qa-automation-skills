@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info: { title: Todo API, version: 1.0.0 }
+paths:
+  /api/auth/login:
+    post:
+      requestBody: { content: { application/json: { schema: { $ref: '#/components/schemas/LoginRequest' } } } }
+      responses:
+        '200': { description: ok, content: { application/json: { schema: { $ref: '#/components/schemas/LoginResponse' } } } }
+        '400': { description: invalid credentials, content: { application/json: { schema: { $ref: '#/components/schemas/Error' } } } }
+        '429': { description: rate limited }
+  /api/todos:
+    get:
+      security: [{ bearer: [] }]
+      parameters:
+        - { name: page, in: query, schema: { type: integer, minimum: 1 } }
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100 } }
+      responses:
+        '200': { description: ok, content: { application/json: { schema: { $ref: '#/components/schemas/TodoList' } } } }
+        '400': { description: bad limit }
+        '401': { description: no token }
+    post:
+      security: [{ bearer: [] }]
+      requestBody: { content: { application/json: { schema: { type: object, required: [title], properties: { title: { type: string, maxLength: 200 } } } } } }
+      responses:
+        '201': { description: created, content: { application/json: { schema: { $ref: '#/components/schemas/TodoEnvelope' } } } }
+        '400': { description: validation error }
+  /api/todos/{id}:
+    patch:
+      security: [{ bearer: [] }]
+      parameters: [{ name: id, in: path, required: true, schema: { type: string, pattern: '^t\d+$' } }]
+      responses: { '200': { description: ok }, '400': { description: malformed id }, '404': { description: not found } }
+    delete:
+      security: [{ bearer: [] }]
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      responses: { '200': { description: ok }, '400': { description: malformed id }, '404': { description: not found } }
+components:
+  securitySchemes: { bearer: { type: http, scheme: bearer } }
+  schemas:
+    LoginRequest: { type: object, required: [email, password], properties: { email: { type: string, format: email }, password: { type: string } } }
+    LoginResponse: { type: object, required: [token, role], properties: { token: { type: string }, role: { type: string, enum: [user, admin] } } }
+    Error: { type: object, required: [message], properties: { message: { type: string } } }
+    Todo: { type: object, required: [_id, userId, title, completed, createdAt], properties: { _id: { type: string }, userId: { type: string }, title: { type: string }, completed: { type: boolean }, createdAt: { type: string, format: date-time } } }
+    TodoEnvelope: { type: object, required: [todo], properties: { todo: { $ref: '#/components/schemas/Todo' } } }
+    TodoList: { type: object, required: [todos, pagination], properties: { todos: { type: array, items: { $ref: '#/components/schemas/Todo' } }, pagination: { type: object, required: [page, limit, total, totalPages], properties: { page: { type: integer }, limit: { type: integer }, total: { type: integer }, totalPages: { type: integer } } } } }
